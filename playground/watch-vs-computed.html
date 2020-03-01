@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{ num }}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                num: 10
+            },
+            computed: {
+                doubleNum: function() {
+                    return this.num * 2;
+                }
+            },
+            watch:{
+                num: function(newValue, oldValue){
+                    this.fetchUserByNumber(newValue, oldValue);
+                }
+            },
+            methods:{
+                fetchUserByNumber: function(newValue, oldValue){
+                    console.log('바뀐 값 : ' + newValue);
+                    console.log('이전 값 : ' + oldValue);
+
+                }
+            }
+        })
+    </script>
+</body>
+</html>
